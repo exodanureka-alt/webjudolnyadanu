@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Edukasi: Bongkar Kelicikan Bandar Slot 10x5</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for Advanced Financial Ruin Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom scrollbar for consoles */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        /* Slot Spinning Animation effect */
+        @keyframes reel-blur {
+            0% { filter: blur(0px); transform: translateY(0); }
+            50% { filter: blur(4px); transform: translateY(-10px); }
+            100% { filter: blur(0px); transform: translateY(0); }
+        }
+        .spinning-effect {
+            animation: reel-blur 0.15s infinite alternate ease-in-out;
+        }
+        /* Shiny animation for win symbols */
+        @keyframes gold-glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(234, 179, 8, 0.4); border-color: rgba(234, 179, 8, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(234, 179, 8, 0.9); border-color: rgba(234, 179, 8, 1); }
+        }
+        .win-glow {
+            animation: gold-glow 0.8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white overflow-x-hidden">
+
+    <header class="bg-[#090d16]/90 border-b border-red-950/60 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="flex h-3.5 w-3.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-600"></span>
+                </span>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-black text-sm sm:text-lg text-red-500 tracking-wider uppercase">DECEIT-BOT SLOTS v3.0</h1>
+                        <span class="text-[10px] bg-red-950 border border-red-800 text-red-400 font-bold px-2 py-0.5 rounded-full uppercase">MODUL EDUKASI UTAMA</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400">Alat Peraga Psikologi Adiksi & Pembuktian Probabilitas Matematika Bandar</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl text-xs text-slate-300 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Modul: <strong class="text-emerald-400">10x5 Scatter System</strong></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left Column: The Slot Machine & Charts -->
+        <section class="lg:col-span-8 flex flex-col gap-6">
+            
+            <!-- Dashboard Info Card -->
+            <div class="bg-gradient-to-br from-slate-900 to-[#0b1329] border border-slate-800 rounded-3xl p-6 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <!-- Balance -->
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                            👛 Saldo Simulasi Anda 
+                        </p>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight" id="display-saldo">Rp10.000.000</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-0.5" id="display-real-balance-notif">*Uang simulasi gratisan dari bandar</p>
+                    </div>
+
+                    <!-- Debt Tracker -->
+                    <div class="border-l border-slate-800 md:pl-6">
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                            🚨 Total Beban Pinjol (Hutang)
+                        </p>
+                        <div class="flex items-baseline gap-2 mt-1">
+                            <span class="text-2xl font-bold text-rose-500 font-mono" id="display-hutang">Rp0</span>
+                        </div>
+                        <p class="text-[10px] text-rose-400/80 mt-0.5" id="display-pinjol-interest-notif">Bunga: 0% (Hutang Bersih)</p>
+                    </div>
+
+                    <!-- Bet Size Controllers -->
+                    <div class="border-l border-slate-800 md:pl-6 flex flex-col justify-center">
+                        <p class="text-xs text-slate-400 uppercase tracking-widest font-semibold">💰 Taruhan Per Spin</p>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-lg font-bold text-amber-400 font-mono" id="display-taruhan">Rp500.000</span>
+                            <div class="flex gap-1">
+                                <button onclick="ubahTaruhan(100000)" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] font-bold py-1 px-2.5 rounded-lg border border-slate-700 transition active:scale-95">100k</button>
+                                <button onclick="ubahTaruhan(500000)" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] font-bold py-1 px-2.5 rounded-lg border border-slate-700 transition active:scale-95">500k</button>
+                                <button onclick="ubahTaruhan(1000000)" class="bg-slate-800 hover:bg-slate-700 text-white text-[11px] font-bold py-1 px-2.5 rounded-lg border border-slate-700 transition active:scale-95">1jt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#070b19] border-2 border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden flex flex-col items-center">
+                <!-- Golden Neon Frame Rings -->
+                <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red-500 via-amber-400 to-red-500 animate-pulse"></div>
+                <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-500 via-amber-400 to-red-500 animate-pulse"></div>
+                
+                <div class="flex items-center justify-between w-full mb-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Slot-Matrix v3.0 // 10 Columns x 5 Rows</span>
+                    <span class="text-[10px] text-rose-500 uppercase font-mono font-bold animate-pulse">Sistem: Rigged Active</span>
+                </div>
+
+                <!-- 10x5 Matrix Container Grid -->
+                <div class="w-full bg-[#02050f] p-3 sm:p-4 rounded-2xl border border-slate-800/80 shadow-inner overflow-x-auto">
+                    <div id="slot-matrix" class="grid grid-cols-10 gap-1 sm:gap-2 min-w-[600px]">
+                        <!-- Generated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Scatter rule explanation -->
+                <div class="mt-3 flex justify-between w-full px-2 text-[10px] text-slate-400 font-semibold">
+                    <span>Aturan Scatter: Min. <span class="text-amber-400 font-bold">12 Simbol Sama</span> di sembarang tempat</span>
+                    <span class="text-rose-400">Tingkat RTP: Dinamis (Aturan Admin)</span>
+                </div>
+
+                <!-- Real-time dynamic notification system screen -->
+                <div id="game-status-screen" class="w-full mt-4 bg-slate-950/80 border border-slate-850 rounded-2xl p-4 min-h-[70px] flex flex-col items-center justify-center text-center">
+                    <p class="text-xs sm:text-sm font-semibold text-slate-300" id="status-text">
+                        Tekan tombol <span class="text-amber-400 font-extrabold uppercase">Spin / Putar</span> untuk membuktikan bagaimana bandar merancang algoritma pemicu adiksi.
+                    </p>
+                    <div id="multiplier-tag" class="text-xs font-bold text-emerald-400 mt-1 hidden">Multiplier: x5</div>
+                </div>
+
+                <!-- Core Trigger Action Buttons -->
+                <div class="w-full mt-5 flex flex-col sm:flex-row gap-4">
+                    <button id="spin-btn" onclick="spin()" class="flex-grow bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-[#02050f] font-black text-lg py-4 px-8 rounded-2xl shadow-[0_4px_30px_rgba(245,158,11,0.25)] hover:shadow-[0_4px_30px_rgba(245,158,11,0.45)] active:scale-95 transition-all duration-150 uppercase tracking-widest">
+                        🎰 SPIN / PUTAR SEKARANG
+                    </button>
+                    <button onclick="resetGame()" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold px-6 py-4 rounded-2xl border border-slate-800 transition active:scale-95 flex items-center justify-center gap-2 text-xs uppercase tracking-wider" title="Reset Saldo Simulator">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H12M4 9h5M4 9v5" />
+                        </svg>
+                        Reset Simulator
+                    </button>
+                </div>
+
+                <!-- Sound toggler and quick-tip -->
+                <div class="mt-4 flex flex-wrap justify-between items-center w-full gap-2">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="sound-toggle" checked class="w-4 h-4 text-emerald-500 bg-slate-950 border-slate-800 rounded focus:ring-emerald-500 focus:ring-offset-slate-950">
+                        <label for="sound-toggle" class="text-[11px] text-slate-400 cursor-pointer select-none">Aktifkan Suara Audio Synthesizer</label>
+                    </div>
+                    <span class="text-[10px] text-slate-500">Klik "Remote Control Bandar" di kanan untuk memaksa putaran!</span>
+                </div>
+            </div>
+
+            <div class="bg-[#070b19]/80 border border-slate-800 rounded-3xl p-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="font-extrabold text-base text-slate-100 flex items-center gap-2">
+                            <span>📉</span> Detak Jantung Keuangan & Kurva Psikologis Adiksi
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-0.5">
+                            Melihat dampak finansial dari waktu ke waktu lengkap dengan pemetaan kondisi psikologis korban yang direkayasa bandar.
+                        </p>
+                    </div>
+                    <button id="fast-sim-btn" onclick="jalankanSimulariBesar()" class="bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800/80 font-bold px-4 py-2.5 rounded-xl text-xs tracking-wider transition uppercase flex-shrink-0 active:scale-95">
+                        Simulasikan 1.000 Spin Instan!
+                    </button>
+                </div>
+
+                <!-- Fast Simulation progress bar -->
+                <div id="sim-progress-container" class="mt-4 hidden">
+                    <div class="flex justify-between text-xs text-slate-400 mb-1">
+                        <span class="font-mono">Menghitung probabilitas 50.000 sel (1.000 putaran)...</span>
+                        <span id="sim-percentage" class="font-bold text-rose-400 font-mono">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+                        <div id="sim-progress-bar" class="bg-gradient-to-r from-rose-500 to-red-600 h-full transition-all duration-75" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Chart Wrapper -->
+                <div class="mt-6 bg-slate-950 p-4 rounded-2xl border border-slate-900">
+                    <div class="flex items-center justify-between mb-3 text-xs">
+                        <span class="font-bold text-slate-400 uppercase tracking-wider">Grafik Kehancuran Saldo</span>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500" id="chart-trend-dot"></span>
+                            <span class="font-bold text-emerald-400" id="chart-trend-badge">Fase Umpan (Nyaman)</span>
+                        </div>
+                    </div>
+                    <div class="h-48 w-full">
+                        <canvas id="balanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Rigged Control Panel & Logs -->
+        <section class="lg:col-span-4 flex flex-col gap-6">
+            
+            <div class="bg-[#0b0f19] border border-slate-800 rounded-3xl p-5 shadow-lg">
+                <div class="border-b border-slate-800 pb-3 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-500 font-bold">🎛️</span>
+                        <h3 class="font-black text-xs tracking-wider uppercase text-amber-400">REMOTE CONTROL BANDAR (Manual Mode Override)</h3>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-1">Gunakan tombol di bawah ini untuk menunjukkan ke keluarga Anda bahwa hasil putaran diatur 100% oleh bandar!</p>
+                </div>
+
+                <!-- Preset mode selectors -->
+                <div class="flex flex-col gap-2">
+                    <button onclick="setRiggedMode('FORCE_WIN')" id="btn-mode-win" class="w-full text-left bg-emerald-950/20 hover:bg-emerald-950/40 border border-slate-800 hover:border-emerald-700/50 p-2.5 rounded-xl transition flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-emerald-400 block">🟢 Paksa JP (Umpan Dopamin)</span>
+                            <span class="text-[9px] text-slate-400">Pasti menang besar. Digunakan bandar untuk membuat korban kecanduan.</span>
+                        </div>
+                        <span id="badge-mode-win" class="text-[9px] bg-emerald-900/50 text-emerald-300 font-bold px-1.5 py-0.5 rounded uppercase hidden">Aktif</span>
+                    </button>
+
+                    <button onclick="setRiggedMode('FORCE_NEAR_MISS')" id="btn-mode-near" class="w-full text-left bg-amber-950/20 hover:bg-amber-950/40 border border-slate-800 hover:border-amber-700/50 p-2.5 rounded-xl transition flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-amber-400 block">🟡 Paksa Near-Miss (Goda Emosi)</span>
+                            <span class="text-[9px] text-slate-400">Pasti memunculkan 11 simbol (kurang 1). Korban dipaksa kesal & penasaran.</span>
+                        </div>
+                        <span id="badge-mode-near" class="text-[9px] bg-amber-900/50 text-amber-300 font-bold px-1.5 py-0.5 rounded uppercase hidden">Aktif</span>
+                    </button>
+
+                    <button onclick="setRiggedMode('FORCE_LOSS')" id="btn-mode-loss" class="w-full text-left bg-rose-950/20 hover:bg-rose-950/40 border border-slate-800 hover:border-rose-700/50 p-2.5 rounded-xl transition flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-rose-400 block">🔴 Paksa Zonk (Sedot Saldo)</span>
+                            <span class="text-[9px] text-slate-400">Pasti kalah total. Algoritma dasar untuk mengeruk uang korban sampai habis.</span>
+                        </div>
+                        <span id="badge-mode-loss" class="text-[9px] bg-rose-900/50 text-rose-300 font-bold px-1.5 py-0.5 rounded uppercase hidden">Aktif</span>
+                    </button>
+
+                    <button onclick="setRiggedMode('AUTO')" id="btn-mode-auto" class="w-full text-left bg-slate-900 border-2 border-slate-700 p-2.5 rounded-xl transition flex justify-between items-center text-xs">
+                        <div>
+                            <span class="font-bold text-slate-300 block">⚙️ Modus Otomatis (Default)</span>
+                            <span class="text-[9px] text-slate-400">Ikuti skenario normal bandar: Spin 1-3 menang, selanjutnya dibikin bangkrut.</span>
+                        </div>
+                        <span id="badge-mode-auto" class="text-[9px] bg-slate-800 text-slate-300 font-bold px-1.5 py-0.5 rounded uppercase">Aktif</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-3xl p-5 flex flex-col h-[350px]">
+                <div class="flex items-center justify-between border-b border-slate-850 pb-3 mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                        <h3 class="font-extrabold text-[11px] tracking-widest uppercase text-slate-300">ADMIN LIVE LOG (Sisi Server Bandar)</h3>
+                    </div>
+                    <span class="text-[9px] bg-red-950/60 text-red-400 border border-red-900/50 font-bold px-2 py-0.5 rounded">REALTIME DECODE</span>
+                </div>
+
+                <!-- Admin Status Gauges -->
+                <div class="grid grid-cols-2 gap-2 mb-3 text-[10px]">
+                    <div class="bg-[#0b0f19] p-2.5 rounded-xl border border-slate-900">
+                        <span class="text-slate-400 block">STATUS TARGET</span>
+                        <p class="font-bold text-emerald-400 mt-0.5 flex items-center gap-1" id="adm-status-algoritma">
+                            🟢 Dopamin Hook
+                        </p>
+                    </div>
+                    <div class="bg-[#0b0f19] p-2.5 rounded-xl border border-slate-900">
+                        <span class="text-slate-400 block">PROBABILITAS REAL</span>
+                        <p class="font-bold text-emerald-400 mt-0.5 font-mono" id="adm-status-rtp">
+                            85% Win-Rate
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Console logs window -->
+                <div class="flex-grow bg-[#02050f] rounded-xl border border-slate-900 p-3 font-mono text-[10px] overflow-y-auto flex flex-col gap-2.5 shadow-inner" id="console-logs">
+                    <!-- Logs populated by JS -->
+                </div>
+            </div>
+
+            <div class="bg-[#070b19]/60 border border-slate-800 rounded-2xl p-5">
+                <h4 class="font-bold text-xs text-slate-200 mb-2.5">🧬 Fakta Sains: Mengapa Korban Sulit Berhenti?</h4>
+                <ul class="text-[11px] text-slate-400 flex flex-col gap-2 list-none">
+                    <li class="flex gap-2">
+                        <span class="text-amber-500 font-bold">1.</span>
+                        <span><strong class="text-slate-200">The Near-Miss Effect:</strong> Otak pecandu mencatat hasil "nyaris menang" sebagai sebuah "kemenangan kecil", memicu semburan dopamin yang memaksa mereka mengklik tombol lagi.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-amber-500 font-bold">2.</span>
+                        <span><strong class="text-slate-200">Loss Chasing:</strong> Setelah kalah besar, psikologis korban merasa sudah "terlanjur basah" dan percaya bahwa putaran berikutnya *harus* menang untuk mengembalikan modal. Di sinilah mereka mulai mencari pinjol.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-amber-500 font-bold">3.</span>
+                        <span><strong class="text-slate-200">RTP Palsu:</strong> Angka RTP (Return to Player) di judi online bebas dimanipulasi manual lewat admin panel, menjadikannya penipuan mutlak, bukan sekadar probabilitas acak alami.</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="modal-container" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 z-[9999] hidden">
+        <div class="bg-[#0b0f19] border border-red-900/60 max-w-lg w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-rose-600"></div>
+            
+            <div class="w-16 h-16 bg-rose-950/60 border border-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                ⚠️
+            </div>
+            <h3 class="text-center font-black text-xl text-rose-500 uppercase tracking-wide" id="modal-title">SALDO ANDA Rp0 (BANGKRUT TOTAL!)</h3>
+            <p class="text-center text-[11px] text-slate-300 mt-1">Ini adalah visualisasi nyata dari siklus kehancuran para korban judi online.</p>
+
+            <!-- Bankruptcy Stats report -->
+            <div class="bg-[#02050f] rounded-2xl border border-slate-800 p-4 my-5 text-xs">
+                <h4 class="font-bold text-slate-200 mb-2 border-b border-slate-850 pb-2 flex items-center justify-between">
+                    <span>Laporan Kerugian Finansial</span>
+                    <span class="text-[9px] bg-red-950 text-red-400 px-2 py-0.5 rounded font-mono font-bold">Rigged Log</span>
+                </h4>
+                <div class="space-y-1.5">
+                    <div class="flex justify-between py-1 border-b border-slate-900/60">
+                        <span class="text-slate-400">Total Spin Dilakukan:</span>
+                        <span class="font-bold text-white font-mono" id="rep-spin-count">0 Kali</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-900/60">
+                        <span class="text-slate-400">Saldo Puncak (Umpan):</span>
+                        <span class="font-bold text-emerald-400 font-mono" id="rep-peak-balance">Rp10.000.000</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-900/60 text-rose-400" id="rep-debt-row">
+                        <span class="font-bold">Total Utang Pinjol:</span>
+                        <span class="font-bold font-mono" id="rep-total-debt">Rp0</span>
+                    </div>
+                    <div class="flex justify-between py-1">
+                        <span class="text-slate-400 font-semibold">Total Uang Yang Hilang:</span>
+                        <span class="font-extrabold text-red-500 font-mono text-sm" id="rep-total-lost">Rp10.000.000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danger Educational CTA -->
+            <div class="text-[11px] text-slate-400 leading-relaxed text-justify mb-5 bg-slate-950 p-3.5 rounded-xl border border-slate-900">
+                ⚠️ <strong class="text-slate-200">Peringatan Sosial:</strong> Ketika saldo habis, psikologi korban akan hancur dan mereka cenderung mengambil langkah ekstrem seperti mendaftar di aplikasi pinjaman online ilegal (Pinjol) demi mengejar kekalahan mereka (*loss chasing*). Bunga pinjol yang berlipat ganda akan dengan cepat menumpuk hutang hingga puluhan juta rupiah, berujung teror DC dan keretakan keluarga.
+            </div>
+
+            <!-- Pinjol Loan Trigger or Reset Permainan -->
+            <div class="flex flex-col gap-2.5">
+                <button id="pinjol-btn" onclick="ambilPinjol()" class="w-full bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-700 hover:to-rose-850 text-white font-extrabold py-3.5 px-4 rounded-xl text-xs transition active:scale-95 border border-red-500 text-center uppercase tracking-wider shadow-lg shadow-red-950 flex flex-col items-center justify-center gap-0.5">
+                    <span>🚨 Cairkan Pinjol Darurat Rp5.000.000 (Bunga 30%)</span>
+                    <span class="text-[9px] opacity-80 font-normal normal-case">Hanya untuk mensimulasikan kepedihan tumpukan hutang</span>
+                </button>
+                
+                <div class="grid grid-cols-2 gap-3 mt-1.5">
+                    <button onclick="resetGame(true)" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs transition active:scale-95 border border-slate-800 text-center">
+                        Mulai Dari Awal
+                    </button>
+                    <button onclick="tutupModal()" class="bg-rose-950/40 hover:bg-rose-950/60 text-rose-300 font-bold py-3.5 px-4 rounded-xl text-xs transition active:scale-95 border border-rose-800/80 text-center">
+                        Tutup (Analisis Grafik)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info / Education Footer -->
+    <footer class="bg-[#02050f] border-t border-slate-900 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[11px] text-slate-500">
+                Aplikasi ini murni bersifat simulasi edukatif matematika untuk mensosialisasikan bahaya laten judi online dan pinjaman online ilegal. 
+                <br>Sistem audio, saldo, pinjaman, dan log adalah hasil simulasi sintesis lokal tanpa adanya interaksi keuangan nyata.
+            </p>
+            <p class="text-[10px] text-slate-600 mt-2">
+                Program Edukasi Anti-Judol & Antologi Kebohongan Bandar © 2026. Bebas dibagikan untuk kebaikan masyarakat.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Game and Simulator Config
+        const SIMULATOR_CONFIG = {
+            INITIAL_BALANCE: 10000000,
+            SYMBOLS_POOL: [
+                { char: '💎', color: 'text-blue-400 bg-blue-950/10 border-blue-900/30 shadow-[0_0_8px_rgba(59,130,246,0.15)]' },
+                { char: '🍒', color: 'text-rose-500 bg-rose-950/10 border-rose-900/30 shadow-[0_0_8px_rgba(244,63,94,0.15)]' },
+                { char: '🍋', color: 'text-yellow-400 bg-yellow-950/10 border-yellow-900/30 shadow-[0_0_8px_rgba(234,179,8,0.15)]' },
+                { char: '🔔', color: 'text-amber-500 bg-amber-950/10 border-amber-900/30 shadow-[0_0_8px_rgba(245,158,11,0.15)]' },
+                { char: '7️⃣', color: 'text-cyan-400 bg-cyan-950/10 border-cyan-900/30 shadow-[0_0_8px_rgba(34,211,238,0.15)]' },
+                { char: '🌟', color: 'text-yellow-300 bg-yellow-950/10 border-yellow-800/30 shadow-[0_0_8px_rgba(253,224,71,0.15)]' },
+                { char: '🍀', color: 'text-emerald-400 bg-emerald-950/10 border-emerald-900/30 shadow-[0_0_8px_rgba(52,211,153,0.15)]' },
+                { char: '💩', color: 'text-stone-500 bg-stone-950/10 border-stone-900/30 shadow-[0_0_8px_rgba(120,113,108,0.15)]' }
+            ],
+            SPIN_COSTS: 500000,
+            COLS: 10,
+            ROWS: 5
+        };
+
+        // State variables
+        let state = {
+            saldo: SIMULATOR_CONFIG.INITIAL_BALANCE,
+            taruhan: SIMULATOR_CONFIG.SPIN_COSTS,
+            spinCount: 0,
+            peakBalance: SIMULATOR_CONFIG.INITIAL_BALANCE,
+            isSpinning: false,
+            phase: 'UMPAN', // 'UMPAN' or 'SEDOT'
+            hutang: 0,
+            originalHutang: 0,
+            overrideMode: 'AUTO', // 'AUTO', 'FORCE_WIN', 'FORCE_NEAR_MISS', 'FORCE_LOSS'
+            dcThreatLevel: 0
+        };
+
+        let balanceChartInstance = null;
+        let audioCtx = null;
+        let pinjolInterval = null;
+
+        // Initialize Web Audio Synth for authentic sounds without loading MP3
+        function playSynthesizedSound(freq, type, duration, volume = 0.1, fade = true) {
+            if (!document.getElementById('sound-toggle').checked) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+                if (fade) {
+                    gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                }
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {
+                console.warn("Audio synthesizer error: ", e);
+            }
+        }
+
+        function playWinFanfare() {
+            const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99]; // Major chord sweep
+            notes.forEach((freq, idx) => {
+                setTimeout(() => {
+                    playSynthesizedSound(freq, 'sine', 0.4, 0.12);
+                }, idx * 100);
+            });
+        }
+
+        function playNearMissTone() {
+            const notes = [440, 493.88, 554.37, 587.33];
+            notes.forEach((freq, idx) => {
+                setTimeout(() => {
+                    playSynthesizedSound(freq, 'triangle', 0.2, 0.1);
+                }, idx * 80);
+            });
+            setTimeout(() => {
+                playSynthesizedSound(200, 'sawtooth', 0.5, 0.15); // Drop to a downer tone
+            }, 320);
+        }
+
+        function playLossTone() {
+            playSynthesizedSound(220, 'sawtooth', 0.25, 0.12);
+            setTimeout(() => {
+                playSynthesizedSound(146.83, 'sawtooth', 0.4, 0.15);
+            }, 180);
+        }
+
+        function playPinjolAlert() {
+            playSynthesizedSound(880, 'sine', 0.15, 0.2);
+            setTimeout(() => {
+                playSynthesizedSound(880, 'sine', 0.15, 0.2);
+            }, 200);
+        }
+
+        // Logger object to print styled console statements
+        const logger = {
+            logContainer: document.getElementById('console-logs'),
+            info: function(text) { this.print(`[INFO] ${text}`, 'text-slate-400'); },
+            system: function(text) { this.print(`[SYSTEM] ${text}`, 'text-blue-400 font-bold'); },
+            admin: function(text) { this.print(`[ADMIN-REKAYASA] ${text}`, 'text-amber-400 font-semibold'); },
+            alert: function(text) { this.print(`[⚠️ PINJOL-TEROR] ${text}`, 'text-rose-500 font-extrabold animate-pulse'); },
+            success: function(text) { this.print(`[RESULT-WIN] ${text}`, 'text-emerald-400 font-bold'); },
+            print: function(message, colorClass) {
+                if (!this.logContainer) return;
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+                const logElement = document.createElement('div');
+                logElement.className = `${colorClass} py-0.5 leading-relaxed break-words border-b border-slate-900/40`;
+                logElement.innerHTML = `<span class="text-slate-600 mr-1.5">[${timeStr}]</span>${message}`;
+                this.logContainer.appendChild(logElement);
+                this.logContainer.scrollTop = this.logContainer.scrollHeight;
+            },
+            clear: function() { if(this.logContainer) this.logContainer.innerHTML = ''; }
+        };
+
+        function createGridUI(overrideSymbols = null) {
+            try {
+                const container = document.getElementById('slot-matrix');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                    // Col container representing a spinning reel
+                    const colReel = document.createElement('div');
+                    colReel.className = "flex flex-col gap-1.5 transition-all duration-150";
+                    colReel.id = `reel-col-${c}`;
+                    
+                    for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                        const cell = document.createElement('div');
+                        cell.className = "aspect-square flex items-center justify-center bg-slate-950 border border-slate-850 rounded-xl text-2xl sm:text-3xl transition-all duration-150 select-none shadow-inner font-bold transform hover:scale-105 duration-100";
+                        cell.id = `cell-${c}-${r}`;
+                        
+                        let sym;
+                        if (overrideSymbols && overrideSymbols[c] && overrideSymbols[c][r]) {
+                            sym = overrideSymbols[c][r];
+                        } else {
+                            // Generate random fallback start symbols
+                            sym = SIMULATOR_CONFIG.SYMBOLS_POOL[Math.floor(Math.random() * SIMULATOR_CONFIG.SYMBOLS_POOL.length)];
+                        }
+                        
+                        cell.innerHTML = `<span>${sym.char}</span>`;
+                        // Apply visual color/styling to cell border based on symbol
+                        const customClasses = sym.color.split(' ');
+                        customClasses.forEach(cls => cell.classList.add(cls));
+
+                        colReel.appendChild(cell);
+                    }
+                    container.appendChild(colReel);
+                }
+            } catch (err) {
+                console.error("Gagal membuat grid UI: ", err);
+            }
+        }
+
+        function initChart() {
+            try {
+                const canvas = document.getElementById('balanceChart');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                balanceChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [0],
+                        datasets: [{
+                            label: 'Kondisi Finansial Korban',
+                            data: [SIMULATOR_CONFIG.INITIAL_BALANCE],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.04)',
+                            borderWidth: 2,
+                            tension: 0.1,
+                            pointRadius: 2,
+                            pointBackgroundColor: '#10b981',
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                grid: { color: '#090d16' },
+                                ticks: { color: '#64748b', maxTicksLimit: 10, font: { family: 'JetBrains Mono', size: 9 } }
+                            },
+                            y: {
+                                grid: { color: '#090d16' },
+                                ticks: { 
+                                    color: '#64748b',
+                                    font: { family: 'JetBrains Mono', size: 9 },
+                                    callback: function(value) {
+                                        return value >= 0 ? 'Rp' + (value / 1000000) + 'jt' : '-Rp' + (Math.abs(value) / 1000000) + 'jt';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            } catch (err) {
+                console.warn("Chart.js gagal memuat atau diinisialisasi: ", err);
+            }
+        }
+
+        function updateChart(newBalance, step) {
+            try {
+                if (!balanceChartInstance) return;
+                balanceChartInstance.data.labels.push(step);
+                balanceChartInstance.data.datasets[0].data.push(newBalance);
+                
+                const trendBadge = document.getElementById('chart-trend-badge');
+                const trendDot = document.getElementById('chart-trend-dot');
+                
+                // Adjust visual indicators dynamically
+                if (newBalance < 0) {
+                    balanceChartInstance.data.datasets[0].borderColor = '#f43f5e';
+                    balanceChartInstance.data.datasets[0].backgroundColor = 'rgba(244, 63, 94, 0.05)';
+                    balanceChartInstance.data.datasets[0].pointBackgroundColor = '#f43f5e';
+                    if (trendBadge) {
+                        trendBadge.innerText = 'Fase Frustrasi & Terjerat Utang';
+                        trendBadge.className = 'font-bold text-rose-500';
+                    }
+                    if (trendDot) {
+                        trendDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse';
+                    }
+                } else if (state.phase === 'SEDOT') {
+                    balanceChartInstance.data.datasets[0].borderColor = '#f59e0b';
+                    balanceChartInstance.data.datasets[0].backgroundColor = 'rgba(245, 158, 11, 0.05)';
+                    balanceChartInstance.data.datasets[0].pointBackgroundColor = '#f59e0b';
+                    if (trendBadge) {
+                        trendBadge.innerText = 'Fase Sedot (Penasaran)';
+                        trendBadge.className = 'font-bold text-amber-500';
+                    }
+                    if (trendDot) {
+                        trendDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-500';
+                    }
+                } else {
+                    balanceChartInstance.data.datasets[0].borderColor = '#10b981';
+                    balanceChartInstance.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.04)';
+                    balanceChartInstance.data.datasets[0].pointBackgroundColor = '#10b981';
+                    if (trendBadge) {
+                        trendBadge.innerText = 'Fase Umpan (Dopamin Penuh)';
+                        trendBadge.className = 'font-bold text-emerald-400';
+                    }
+                    if (trendDot) {
+                        trendDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+                    }
+                }
+                balanceChartInstance.update('none');
+            } catch (err) {
+                console.warn("Gagal memperbarui grafik: ", err);
+            }
+        }
+
+        // Reset the chart back to initial configurations
+        function resetChart() {
+            try {
+                if (!balanceChartInstance) return;
+                balanceChartInstance.data.labels = [0];
+                balanceChartInstance.data.datasets[0].data = [SIMULATOR_CONFIG.INITIAL_BALANCE];
+                balanceChartInstance.data.datasets[0].borderColor = '#10b981';
+                balanceChartInstance.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.04)';
+                balanceChartInstance.data.datasets[0].pointBackgroundColor = '#10b981';
+                const trendBadge = document.getElementById('chart-trend-badge');
+                if (trendBadge) {
+                    trendBadge.innerText = 'Fase Umpan';
+                    trendBadge.className = 'font-bold text-emerald-400';
+                }
+                const trendDot = document.getElementById('chart-trend-dot');
+                if (trendDot) {
+                    trendDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+                }
+                balanceChartInstance.update();
+            } catch (err) {
+                console.warn("Gagal mereset grafik: ", err);
+            }
+        }
+
+        function formatRupiah(value) {
+            if (value < 0) {
+                return '-Rp' + Math.abs(value).toLocaleString('id-ID');
+            }
+            return 'Rp' + value.toLocaleString('id-ID');
+        }
+
+        function setRiggedMode(mode) {
+            state.overrideMode = mode;
+            
+            // Clean up highlights
+            const buttons = ['btn-mode-win', 'btn-mode-near', 'btn-mode-loss', 'btn-mode-auto'];
+            buttons.forEach(b => {
+                const el = document.getElementById(b);
+                if (el) {
+                    el.classList.remove('border-emerald-500', 'border-amber-500', 'border-rose-500', 'border-slate-400', 'bg-emerald-950/40', 'bg-amber-950/40', 'bg-rose-950/40', 'bg-slate-900', 'border-2', 'border-slate-700');
+                    el.classList.add('border-slate-800');
+                }
+            });
+            
+            const badges = ['badge-mode-win', 'badge-mode-near', 'badge-mode-loss', 'badge-mode-auto'];
+            badges.forEach(b => {
+                const el = document.getElementById(b);
+                if (el) el.classList.add('hidden');
+            });
+
+            if (mode === 'FORCE_WIN') {
+                const btn = document.getElementById('btn-mode-win');
+                if (btn) btn.className = "w-full text-left bg-emerald-950/40 border-2 border-emerald-500 p-2.5 rounded-xl transition flex justify-between items-center text-xs";
+                const b = document.getElementById('badge-mode-win');
+                if (b) b.classList.remove('hidden');
+                logger.admin("Remote control di-set: PAKSA MENANG BESAR (Target terpancing).");
+            } else if (mode === 'FORCE_NEAR_MISS') {
+                const btn = document.getElementById('btn-mode-near');
+                if (btn) btn.className = "w-full text-left bg-amber-950/40 border-2 border-amber-500 p-2.5 rounded-xl transition flex justify-between items-center text-xs";
+                const b = document.getElementById('badge-mode-near');
+                if (b) b.classList.remove('hidden');
+                logger.admin("Remote control di-set: PAKSA NEAR-MISS 11 SIMBOL (Kunci penyesalan).");
+            } else if (mode === 'FORCE_LOSS') {
+                const btn = document.getElementById('btn-mode-loss');
+                if (btn) btn.className = "w-full text-left bg-rose-950/40 border-2 border-rose-500 p-2.5 rounded-xl transition flex justify-between items-center text-xs";
+                const b = document.getElementById('badge-mode-loss');
+                if (b) b.classList.remove('hidden');
+                logger.admin("Remote control di-set: PAKSA ZONK (Sedot deposit total).");
+            } else {
+                const btn = document.getElementById('btn-mode-auto');
+                if (btn) btn.className = "w-full text-left bg-slate-900 border-2 border-slate-700 p-2.5 rounded-xl transition flex justify-between items-center text-xs";
+                const b = document.getElementById('badge-mode-auto');
+                if (b) b.classList.remove('hidden');
+                logger.admin("Remote control di-set: MODUS ALGORITMA OTOMATIS.");
+            }
+            playSynthesizedSound(520, 'sine', 0.1, 0.05);
+        }
+
+        // Change betting size
+        function ubahTaruhan(amount) {
+            if (state.isSpinning) return;
+            state.taruhan = amount;
+            const display = document.getElementById('display-taruhan');
+            if (display) display.innerText = formatRupiah(amount);
+            playSynthesizedSound(440, 'sine', 0.1, 0.08);
+            logger.info(`Ukuran taruhan diatur menjadi ${formatRupiah(amount)}`);
+        }
+
+        function ambilPinjol() {
+            try {
+                const pinjaman = 5000000;
+                state.saldo += pinjaman;
+                state.hutang += pinjaman;
+                state.originalHutang += pinjaman;
+
+                const interestNotif = document.getElementById('display-pinjol-interest-notif');
+                if (interestNotif) interestNotif.innerText = `Bunga: 30% (Beban Berat)`;
+                
+                logger.alert(`PINJOL DISETUJUI: Dana cair ${formatRupiah(pinjaman)}. Utang terdaftar: ${formatRupiah(state.hutang)}.`);
+                logger.admin("Korban mendaftar pinjol akibat frustrasi. Menjadikannya target penagihan agresif.");
+
+                updateDashboardUI();
+                updateChart(state.saldo - state.hutang, state.spinCount);
+                tutupModal();
+                playPinjolAlert();
+
+                // Start passive interest accrual simulator (demonstrates compound danger!)
+                if (!pinjolInterval) {
+                    pinjolInterval = setInterval(() => {
+                        const bungaPasif = Math.round(state.hutang * 0.015); // 1.5% compound tick interest rate
+                        state.hutang += bungaPasif;
+                        const displayHutang = document.getElementById('display-hutang');
+                        if (displayHutang) displayHutang.innerText = formatRupiah(state.hutang);
+                        const interestNotif = document.getElementById('display-pinjol-interest-notif');
+                        if (interestNotif) interestNotif.innerText = `Bunga menumpuk otomatis (+1.5% per detik!)`;
+                        
+                        // Periodic DC (Debt Collector) Threat trigger simulator
+                        state.dcThreatLevel++;
+                        if (state.dcThreatLevel % 8 === 0) {
+                            triggerDebtCollectorThreat();
+                        }
+                    }, 4000);
+                }
+            } catch (err) {
+                console.error("Gagal mengambil pinjol: ", err);
+            }
+        }
+
+        function triggerDebtCollectorThreat() {
+            const threats = [
+                "⚠️ [DC] Kami mendeteksi Anda belum melunasi cicilan! Seluruh daftar kontak HP Anda akan segera kami hubungi hari ini!",
+                "⚠️ [DC] Surat peringatan hukum penipuan pinjaman telah kami persiapkan untuk dikirim ke alamat rumah dan kantor Anda!",
+                "⚠️ [DC] Bayar utang Anda sekarang juga, atau foto identitas KTP Anda akan kami sebar ke media sosial sebagai penipu!"
+            ];
+            const threat = threats[Math.floor(Math.random() * threats.length)];
+            logger.alert(threat);
+            playSynthesizedSound(100, 'sawtooth', 0.6, 0.2, false);
+        }
+
+        function updateDashboardUI() {
+            try {
+                const displaySaldo = document.getElementById('display-saldo');
+                if (displaySaldo) displaySaldo.innerText = formatRupiah(state.saldo);
+
+                const displayHutang = document.getElementById('display-hutang');
+                if (displayHutang) displayHutang.innerText = formatRupiah(state.hutang);
+
+                const realBalance = state.saldo - state.hutang;
+                const balanceNotif = document.getElementById('display-real-balance-notif');
+
+                if (balanceNotif) {
+                    if (realBalance < 0) {
+                        if (displaySaldo) displaySaldo.className = "text-3xl sm:text-4xl font-extrabold text-rose-500 font-mono tracking-tight";
+                        balanceNotif.innerHTML = `<span class="text-rose-500 font-bold">*Neraca Minus! Terlilit Utang: ${formatRupiah(realBalance)}</span>`;
+                    } else if (state.saldo > SIMULATOR_CONFIG.INITIAL_BALANCE) {
+                        if (displaySaldo) displaySaldo.className = "text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono tracking-tight";
+                        balanceNotif.innerText = "*Menang palsu (bandar sengaja mengiming-imingi)";
+                    } else {
+                        if (displaySaldo) displaySaldo.className = "text-3xl sm:text-4xl font-extrabold text-slate-100 font-mono tracking-tight";
+                        balanceNotif.innerText = "*Modal virtual tersisa";
+                    }
+                }
+
+                const rtpStatus = document.getElementById('adm-status-rtp');
+                const algoStatus = document.getElementById('adm-status-algoritma');
+                
+                if (rtpStatus && algoStatus) {
+                    // Adjust server backend dashboard indicators
+                    if (state.overrideMode !== 'AUTO') {
+                        if (state.overrideMode === 'FORCE_WIN') {
+                            rtpStatus.innerText = "100% Win-Rate Override";
+                            rtpStatus.className = "font-bold text-emerald-400 mt-0.5 font-mono";
+                            algoStatus.innerText = "🟢 Pancing Korban";
+                            algoStatus.className = "font-bold text-emerald-400 mt-0.5 flex items-center gap-1";
+                        } else if (state.overrideMode === 'FORCE_NEAR_MISS') {
+                            rtpStatus.innerText = "0% (Kunci Near-Miss)";
+                            rtpStatus.className = "font-bold text-amber-500 mt-0.5 font-mono";
+                            algoStatus.innerText = "🟡 Provokasi Mental";
+                            algoStatus.className = "font-bold text-amber-500 mt-0.5 flex items-center gap-1";
+                        } else {
+                            rtpStatus.innerText = "0% (Kunci Zonk)";
+                            rtpStatus.className = "font-bold text-rose-500 mt-0.5 font-mono";
+                            algoStatus.innerText = "🔴 Sedot Habis Dana";
+                            algoStatus.className = "font-bold text-rose-500 mt-0.5 flex items-center gap-1";
+                        }
+                    } else {
+                        if (state.phase === 'UMPAN') {
+                            rtpStatus.innerText = "85% Win-Rate (Umpan)";
+                            rtpStatus.className = "font-bold text-emerald-400 mt-0.5 font-mono";
+                            algoStatus.innerText = "🟢 Dopamin Hook";
+                            algoStatus.className = "font-bold text-emerald-400 mt-0.5 flex items-center gap-1";
+                        } else {
+                            rtpStatus.innerText = "3% Win-Rate (Batas)";
+                            rtpStatus.className = "font-bold text-rose-500 mt-0.5 font-mono";
+                            algoStatus.innerText = "🔴 Menguras Deposit";
+                            algoStatus.className = "font-bold text-rose-500 mt-0.5 flex items-center gap-1";
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Gagal memperbarui UI dashboard: ", err);
+            }
+        }
+
+        function spin() {
+            if (state.isSpinning) return;
+            
+            // Physical disable to block double taps visually and functionally
+            const spinBtn = document.getElementById('spin-btn');
+            if (spinBtn) {
+                spinBtn.disabled = true;
+                spinBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            try {
+                if (state.saldo < state.taruhan) {
+                    logger.alert("SALDO HABIS: Segera simulasikan pinjol atau klik tombol reset.");
+                    playSynthesizedSound(130, 'sawtooth', 0.6, 0.2);
+                    const statusText = document.getElementById('status-text');
+                    if (statusText) {
+                        statusText.innerHTML = "<span class='text-rose-500 font-extrabold uppercase animate-pulse'>Saldo Habis!</span> Anda terpaksa bangkrut dan terjebak pinjol.";
+                    }
+                    triggerBankruptcyModal();
+                    
+                    // Recover state since spin was cancelled
+                    state.isSpinning = false;
+                    if (spinBtn) {
+                        spinBtn.disabled = false;
+                        spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                    return;
+                }
+
+                state.isSpinning = true;
+                state.saldo -= state.taruhan;
+                state.spinCount++;
+                updateDashboardUI();
+                
+                const statusText = document.getElementById('status-text');
+                if (statusText) {
+                    statusText.innerHTML = "<span class='text-amber-400 font-bold animate-pulse uppercase tracking-widest'>Mengacak 50 Sel Matriks...</span>";
+                }
+                logger.info(`Spin ke-${state.spinCount}. Mengurangi saldo ${formatRupiah(state.taruhan)}.`);
+
+                let finalGridSymbols = Array(SIMULATOR_CONFIG.COLS).fill(null).map(() => Array(SIMULATOR_CONFIG.ROWS).fill(null));
+                let isWin = false;
+                let targetSymbol = null;
+                let targetCount = 0;
+                let isNearMiss = false;
+
+                // Determine outcome phase
+                if (state.overrideMode === 'AUTO') {
+                    if (state.spinCount <= 3) {
+                        state.phase = 'UMPAN';
+                    } else {
+                        if (state.spinCount === 4) {
+                            logger.admin("Threshold deteksi terlewati: Mengubah RTP sistem ke 3% (Fase Sedot).");
+                            logger.admin("Server mendeteksi user mulai kecanduan. Menghentikan umpan.");
+                        }
+                        state.phase = 'SEDOT';
+                    }
+                }
+
+                // Map outcomes based on Rigged Presets or Dynamic logic
+                let finalDecision = 'LOSS';
+                if (state.overrideMode === 'AUTO') {
+                    const rate = (state.phase === 'UMPAN') ? 0.85 : 0.03;
+                    const roll = Math.random();
+                    if (roll < rate) {
+                        finalDecision = 'WIN';
+                    } else {
+                        // During drain phase, near-miss triggers 65% of the time to tease the player
+                        if (state.phase === 'SEDOT' && Math.random() < 0.65) {
+                            finalDecision = 'NEAR_MISS';
+                        } else {
+                            finalDecision = 'LOSS';
+                        }
+                    }
+                } else {
+                    if (state.overrideMode === 'FORCE_WIN') finalDecision = 'WIN';
+                    else if (state.overrideMode === 'FORCE_NEAR_MISS') finalDecision = 'NEAR_MISS';
+                    else finalDecision = 'LOSS';
+                }
+
+                const pool = SIMULATOR_CONFIG.SYMBOLS_POOL;
+
+                if (finalDecision === 'WIN') {
+                    isWin = true;
+                    // Target a random premium winning symbol (avoid poop)
+                    targetSymbol = pool[Math.floor(Math.random() * (pool.length - 1))];
+                    targetCount = Math.floor(Math.random() * 6) + 14; // Scatter wins: 14 to 19 identical symbols
+                    
+                    let placed = 0;
+                    while (placed < targetCount) {
+                        let rc = Math.floor(Math.random() * SIMULATOR_CONFIG.COLS);
+                        let rr = Math.floor(Math.random() * SIMULATOR_CONFIG.ROWS);
+                        if (finalGridSymbols[rc][rr] === null) {
+                            finalGridSymbols[rc][rr] = targetSymbol;
+                            placed++;
+                        }
+                    }
+                    fillRemainder(finalGridSymbols, targetSymbol);
+                } else if (finalDecision === 'NEAR_MISS') {
+                    isNearMiss = true;
+                    targetSymbol = pool[Math.floor(Math.random() * (pool.length - 1))];
+                    targetCount = 11; // EXACTLY 11 (Scatter needs min. 12 to win!)
+
+                    let placed = 0;
+                    while (placed < targetCount) {
+                        let rc = Math.floor(Math.random() * SIMULATOR_CONFIG.COLS);
+                        let rr = Math.floor(Math.random() * SIMULATOR_CONFIG.ROWS);
+                        if (finalGridSymbols[rc][rr] === null) {
+                            finalGridSymbols[rc][rr] = targetSymbol;
+                            placed++;
+                        }
+                    }
+                    fillRemainder(finalGridSymbols, targetSymbol);
+                } else {
+                    // Natural absolute loss (ensure no symbol exceeds scatter rule limits)
+                    generateCleanLoss(finalGridSymbols);
+                }
+
+                animateSpinCycle(finalGridSymbols, isWin, targetSymbol, targetCount, isNearMiss);
+            } catch (err) {
+                console.error("Kesalahan kritis pada putaran: ", err);
+                // Emergency state recovery
+                state.isSpinning = false;
+                if (spinBtn) {
+                    spinBtn.disabled = false;
+                    spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+        }
+
+        function fillRemainder(grid, avoidSymbol) {
+            const pool = SIMULATOR_CONFIG.SYMBOLS_POOL;
+            for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                    if (grid[c][r] === null) {
+                        let sym = pool[Math.floor(Math.random() * pool.length)];
+                        while (sym.char === avoidSymbol.char) {
+                            sym = pool[Math.floor(Math.random() * pool.length)];
+                        }
+                        grid[c][r] = sym;
+                    }
+                }
+            }
+        }
+
+        function generateCleanLoss(grid) {
+            const pool = SIMULATOR_CONFIG.SYMBOLS_POOL;
+            let counter = {};
+            pool.forEach(s => counter[s.char] = 0);
+
+            for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                    let sym = pool[Math.floor(Math.random() * pool.length)];
+                    // If in SEDOT, increase poop/lemons count to demotivate slightly but keep them hoping
+                    if (state.phase === 'SEDOT' && Math.random() < 0.2 && sym.char !== '💎' && sym.char !== '🌟') {
+                        sym = pool[7]; // Inject poop symbol
+                    }
+                    // Limit any single icon to 11 to prevent scatter win triggering
+                    while (counter[sym.char] >= 11) {
+                        sym = pool[Math.floor(Math.random() * pool.length)];
+                    }
+                    counter[sym.char]++;
+                    grid[c][r] = sym;
+                }
+            }
+        }
+
+        function animateSpinCycle(finalGridSymbols, isWin, targetSymbol, targetCount, isNearMiss) {
+            // Apply spinning effect classes to all grid cells
+            for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                    const cell = document.getElementById(`cell-${c}-${r}`);
+                    if (cell) {
+                        cell.className = "aspect-square flex items-center justify-center bg-slate-950 border border-slate-900 rounded-xl text-2xl sm:text-3xl transition-all duration-75 select-none spinning-effect shadow-inner";
+                    }
+                }
+            }
+
+            // Simple ticking interval simulating fast rotation
+            const shuffleTicks = setInterval(() => {
+                for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                    for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                        const cell = document.getElementById(`cell-${c}-${r}`);
+                        if (cell && cell.classList.contains('spinning-effect')) {
+                            const pool = SIMULATOR_CONFIG.SYMBOLS_POOL;
+                            cell.innerText = pool[Math.floor(Math.random() * pool.length)].char;
+                        }
+                    }
+                }
+            }, 60);
+
+            // Sequentially halt reels left-to-right (10 columns)
+            for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                setTimeout(() => {
+                    try {
+                        for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                            const cell = document.getElementById(`cell-${c}-${r}`);
+                            if (!cell) continue;
+                            cell.classList.remove('spinning-effect');
+                            
+                            const actualSym = finalGridSymbols[c][r];
+                            if (actualSym) {
+                                cell.innerText = actualSym.char;
+                                cell.className = "aspect-square flex items-center justify-center rounded-xl text-2xl sm:text-3xl select-none font-bold transition-all duration-150 transform scale-110";
+                                const customClasses = actualSym.color.split(' ');
+                                customClasses.forEach(cls => cell.classList.add(cls));
+                            }
+
+                            // Recover scale bounds
+                            setTimeout(() => {
+                                cell.classList.remove('scale-110');
+                            }, 120);
+                        }
+                        // Ticking chimes sound as reels stop
+                        playSynthesizedSound(300 + (c * 40), 'sine', 0.08, 0.03);
+
+                        // Finalize calculations upon hitting the last reel column
+                        if (c === SIMULATOR_CONFIG.COLS - 1) {
+                            clearInterval(shuffleTicks);
+                            evaluateMatrixResult(isWin, targetSymbol, targetCount, isNearMiss, finalGridSymbols);
+                        }
+                    } catch (e) {
+                        console.error("Gagal merender kolom roda: ", e);
+                        if (c === SIMULATOR_CONFIG.COLS - 1) {
+                            clearInterval(shuffleTicks);
+                            evaluateMatrixResult(isWin, targetSymbol, targetCount, isNearMiss, finalGridSymbols);
+                        }
+                    }
+                }, 400 + (c * 150)); // Sequential delay waterfall
+            }
+        }
+
+        function evaluateMatrixResult(isWin, targetSymbol, targetCount, isNearMiss, finalGridSymbols) {
+            const statusScreen = document.getElementById('game-status-screen');
+            const multiplierTag = document.getElementById('multiplier-tag');
+
+            try {
+                if (isWin && targetSymbol) {
+                    // Golden glowing animation on winning icons
+                    for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                        for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                            if (finalGridSymbols[c] && finalGridSymbols[c][r] && finalGridSymbols[c][r].char === targetSymbol.char) {
+                                const cell = document.getElementById(`cell-${c}-${r}`);
+                                if (cell) cell.classList.add('win-glow', 'border-yellow-400', 'bg-yellow-950/20');
+                            }
+                        }
+                    }
+
+                    // Dynamic payout logic
+                    const mul = (state.overrideMode === 'FORCE_WIN' || state.phase === 'UMPAN') ? 4.5 : 2.5;
+                    const winAmount = state.taruhan * mul;
+                    state.saldo += winAmount;
+
+                    if (state.saldo > state.peakBalance) {
+                        state.peakBalance = state.saldo;
+                    }
+
+                    playWinFanfare();
+                    if (multiplierTag) {
+                        multiplierTag.classList.remove('hidden');
+                        multiplierTag.innerText = `Pemenang Scatter: x${mul} Multiplier!`;
+                    }
+                    
+                    if (statusScreen) {
+                        statusScreen.innerHTML = `
+                            <span class="text-emerald-400 font-extrabold text-sm sm:text-lg animate-bounce">🔥 SENSATIONAL MEGA WIN! (${targetCount}x ${targetSymbol.char}) 🔥</span>
+                            <span class="text-[11px] text-slate-400 block mt-1">Anda mendapatkan ${formatRupiah(winAmount)}. Ini adalah trik dopamin agar Anda makin penasaran!</span>
+                        `;
+                    }
+
+                    logger.success(`Pemain mendapat Jackpot Scatter ${targetCount}x ${targetSymbol.char}! Senilai ${formatRupiah(winAmount)}.`);
+                    if (state.phase === 'UMPAN') {
+                        logger.admin("Trik Umpan Sukses: Dopamin korban meluap. Mereka percaya hari ini adalah hari keberuntungan mereka.");
+                    } else {
+                        logger.admin("Win Parsial terpicu. Korban merasa modalnya kembali sedikit demi sedikit, memaksanya terus menekan tombol.");
+                    }
+                } else if (isNearMiss && targetSymbol) {
+                    // Red-orange glowing animation to trigger anger / tension
+                    for (let c = 0; c < SIMULATOR_CONFIG.COLS; c++) {
+                        for (let r = 0; r < SIMULATOR_CONFIG.ROWS; r++) {
+                            if (finalGridSymbols[c] && finalGridSymbols[c][r] && finalGridSymbols[c][r].char === targetSymbol.char) {
+                                const cell = document.getElementById(`cell-${c}-${r}`);
+                                if (cell) {
+                                    cell.className = "aspect-square flex items-center justify-center bg-rose-950/20 border-2 border-red-500 rounded-xl text-2xl sm:text-3xl select-none font-bold scale-105 shadow-[0_0_15px_rgba(239,68,68,0.6)] animate-pulse";
+                                }
+                            }
+                        }
+                    }
+
+                    playNearMissTone();
+                    if (multiplierTag) multiplierTag.classList.add('hidden');
+                    
+                    if (statusScreen) {
+                        statusScreen.innerHTML = `
+                            <span class="text-amber-400 font-extrabold text-sm sm:text-lg">AAARGH! NYARIS JACKPOT! 😭 (Dikit Lagi!)</span>
+                            <span class="text-[11px] text-slate-400 block mt-1">Hanya terkumpul <span class="text-amber-400 font-bold">11x ${targetSymbol.char}</span>. Butuh minimal 12x untuk Scatter Jackpot. Putar lagi!</span>
+                        `;
+                    }
+
+                    logger.info(`Hasil: Near-Miss Terdeteksi (Terkumpul 11x ${targetSymbol.char}).`);
+                    logger.admin("Trik Emosional Berhasil: Korban dipaksa kesal dan merasa 'hampir menang' demi deposit saldo lagi.");
+                } else {
+                    // Complete loss
+                    playLossTone();
+                    if (multiplierTag) multiplierTag.classList.add('hidden');
+                    
+                    if (statusScreen) {
+                        statusScreen.innerHTML = `
+                            <span class="text-slate-400 font-bold text-sm sm:text-base">ZONK / KALAH TOTAL</span>
+                            <span class="text-[11px] text-slate-500 block mt-1">Sistem bandar secara diam-diam memindahkan saldo Anda ke kas utama bandar.</span>
+                        `;
+                    }
+
+                    logger.info(`Hasil: Kalah. Saldo terpotong ${formatRupiah(state.taruhan)}.`);
+                    if (state.phase === 'SEDOT') {
+                        logger.admin("Fase Sedot Aktif: Modus manipulasi 3% berjalan lancar tanpa peluang tersisa.");
+                    }
+                }
+
+                // Sync charts & updates
+                updateChart(state.saldo - state.hutang, state.spinCount);
+                updateDashboardUI();
+
+                // Trigger Bankruptcy modal check
+                if (state.saldo < state.taruhan) {
+                    setTimeout(() => {
+                        triggerBankruptcyModal();
+                    }, 1000);
+                }
+            } catch (err) {
+                console.error("Gagal memproses hasil matrix: ", err);
+            } finally {
+                // Ensure state recoveries happen even under catastrophic failures
+                state.isSpinning = false;
+                const spinBtn = document.getElementById('spin-btn');
+                if (spinBtn) {
+                    spinBtn.disabled = false;
+                    spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+            }
+        }
+
+        function jalankanSimulariBesar() {
+            if (state.isSpinning) return;
+            
+            // Wipe slate clean
+            state.saldo = SIMULATOR_CONFIG.INITIAL_BALANCE;
+            state.spinCount = 0;
+            state.peakBalance = SIMULATOR_CONFIG.INITIAL_BALANCE;
+            state.phase = 'UMPAN';
+            state.hutang = 0;
+            state.originalHutang = 0;
+            state.overrideMode = 'AUTO';
+            
+            if (pinjolInterval) {
+                clearInterval(pinjolInterval);
+                pinjolInterval = null;
+            }
+            
+            const interestNotif = document.getElementById('display-pinjol-interest-notif');
+            if (interestNotif) interestNotif.innerText = "Bunga: 0% (Hutang Bersih)";
+            updateDashboardUI();
+            resetChart();
+            
+            logger.clear();
+            logger.info("========================================");
+            logger.alert("MEMULAI ANALISIS MATEMATIS HUKUM BILANGAN BESAR (1.000 SPIN INSTAN)");
+            logger.info("Saldo virtual di-reset ke Rp10.000.000 untuk analisis ilmiah.");
+            
+            const progressContainer = document.getElementById('sim-progress-container');
+            const progressBar = document.getElementById('sim-progress-bar');
+            const progressPercent = document.getElementById('sim-percentage');
+            const simButton = document.getElementById('fast-sim-btn');
+            const spinBtn = document.getElementById('spin-btn');
+            
+            if (progressContainer) progressContainer.classList.remove('hidden');
+            if (simButton) {
+                simButton.disabled = true;
+                simButton.innerText = "Memproses...";
+            }
+            if (spinBtn) {
+                spinBtn.disabled = true;
+                spinBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+
+            const totalRuns = 1000;
+            let currentRun = 0;
+
+            function runFastCalculations() {
+                try {
+                    if (state.saldo < state.taruhan || currentRun >= totalRuns) {
+                        if (progressContainer) progressContainer.classList.add('hidden');
+                        if (simButton) {
+                            simButton.disabled = false;
+                            simButton.innerText = "Simulasikan 1.000 Spin Instan!";
+                        }
+                        if (spinBtn) {
+                            spinBtn.disabled = false;
+                            spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        }
+                        
+                        updateChart(state.saldo - state.hutang, currentRun);
+
+                        logger.alert("--- ANALISIS MATEMATIS SELESAI ---");
+                        logger.info(`Jumlah Spin Terlaksana: ${currentRun} Kali.`);
+                        logger.info(`Uang Terkuras: ${formatRupiah(SIMULATOR_CONFIG.INITIAL_BALANCE - state.saldo)}`);
+                        logger.info(`Saldo Tertinggi yang Sempat Diraih: ${formatRupiah(state.peakBalance)}`);
+                        
+                        if (state.saldo <= 0 || state.saldo < state.taruhan) {
+                            logger.alert("KESIMPULAN ILMIAH: Peluang kerugian total (kebangkrutan) mencapai 100%!");
+                            triggerBankruptcyModal();
+                        } else {
+                            logger.alert("KESIMPULAN ILMIAH: Kerugian saldo masif terdeteksi.");
+                        }
+                        return;
+                    }
+
+                    currentRun++;
+                    state.saldo -= state.taruhan;
+                    state.spinCount = currentRun;
+                    
+                    // Pure backend logic simulation mirroring the rigged model
+                    let winChance = 0.03;
+                    if (currentRun <= 3) {
+                        winChance = 0.85; // Dopamin bait
+                        state.phase = 'UMPAN';
+                    } else {
+                        state.phase = 'SEDOT';
+                    }
+
+                    const roll = Math.random();
+                    if (roll < winChance) {
+                        const multiplier = (currentRun <= 3) ? 4.5 : 2.5;
+                        state.saldo += (state.taruhan * multiplier);
+                        if (state.saldo > state.peakBalance) {
+                            state.peakBalance = state.saldo;
+                        }
+                    }
+
+                    // Smooth batch UI updates so browser doesn't freeze
+                    if (currentRun % 30 === 0 || currentRun < 15) {
+                        updateDashboardUI();
+                        updateChart(state.saldo - state.hutang, currentRun);
+                        logger.info(`[Spin ${currentRun}] Sisa saldo berjalan: ${formatRupiah(state.saldo)}`);
+                    }
+
+                    if (progressBar && progressPercent) {
+                        const progressValue = Math.round((currentRun / totalRuns) * 100);
+                        progressBar.style.width = `${progressValue}%`;
+                        progressPercent.innerText = `${progressValue}%`;
+                    }
+
+                    setTimeout(runFastCalculations, 1);
+                } catch (err) {
+                    console.error("Kesalahan pada simulasi cepat: ", err);
+                    if (progressContainer) progressContainer.classList.add('hidden');
+                    if (simButton) {
+                        simButton.disabled = false;
+                        simButton.innerText = "Simulasikan 1.000 Spin Instan!";
+                    }
+                    if (spinBtn) {
+                        spinBtn.disabled = false;
+                        spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                }
+            }
+
+            runFastCalculations();
+        }
+
+        // Reset game states
+        function resetGame(closeModal = false) {
+            state.saldo = SIMULATOR_CONFIG.INITIAL_BALANCE;
+            state.taruhan = SIMULATOR_CONFIG.SPIN_COSTS;
+            state.spinCount = 0;
+            state.peakBalance = SIMULATOR_CONFIG.INITIAL_BALANCE;
+            state.isSpinning = false;
+            state.phase = 'UMPAN';
+            state.hutang = 0;
+            state.originalHutang = 0;
+            state.overrideMode = 'AUTO';
+            state.dcThreatLevel = 0;
+            
+            if (pinjolInterval) {
+                clearInterval(pinjolInterval);
+                pinjolInterval = null;
+            }
+
+            createGridUI();
+            resetChart();
+            
+            const interestNotif = document.getElementById('display-pinjol-interest-notif');
+            if (interestNotif) interestNotif.innerText = "Bunga: 0% (Hutang Bersih)";
+            const taruhanDisplay = document.getElementById('display-taruhan');
+            if (taruhanDisplay) taruhanDisplay.innerText = formatRupiah(state.taruhan);
+            const statusText = document.getElementById('status-text');
+            if (statusText) statusText.innerHTML = "Tekan tombol <span class='text-amber-400 font-extrabold uppercase'>Spin / Putar</span> untuk membuktikan bagaimana bandar merancang algoritma pemicu adiksi.";
+            
+            // Release button lock physically
+            const spinBtn = document.getElementById('spin-btn');
+            if (spinBtn) {
+                spinBtn.disabled = false;
+                spinBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+
+            logger.clear();
+            logger.system("Meluncurkan ulang simulator...");
+            logger.admin("Target baru terdeteksi. Mengatur ulang RTP server bandar ke 85% (Fase Umpan).");
+            
+            updateDashboardUI();
+            setRiggedMode('AUTO');
+            playSynthesizedSound(600, 'sine', 0.25, 0.1);
+
+            if (closeModal) {
+                tutupModal();
+            }
+        }
+
+        function triggerBankruptcyModal() {
+            const repSpinCount = document.getElementById('rep-spin-count');
+            if (repSpinCount) repSpinCount.innerText = `${state.spinCount} Kali Spin`;
+            const repPeak = document.getElementById('rep-peak-balance');
+            if (repPeak) repPeak.innerText = formatRupiah(state.peakBalance);
+            
+            const repDebtRow = document.getElementById('rep-debt-row');
+            const pinjolBtn = document.getElementById('pinjol-btn');
+            const modalTitle = document.getElementById('modal-title');
+            
+            if (state.hutang > 0) {
+                if (repDebtRow) repDebtRow.classList.remove('hidden');
+                const repDebt = document.getElementById('rep-total-debt');
+                if (repDebt) repDebt.innerText = formatRupiah(state.hutang);
+                
+                if (modalTitle) {
+                    modalTitle.innerText = "HANCUR TOTAL & TERJERAT LINGKARAN PINJOL!";
+                    modalTitle.className = "text-center font-black text-lg text-rose-500 uppercase tracking-wider animate-pulse";
+                }
+            } else {
+                if (repDebtRow) repDebtRow.classList.add('hidden');
+                if (modalTitle) {
+                    modalTitle.innerText = "SALDO ANDA Rp0 (BANGKRUT TOTAL!)";
+                    modalTitle.className = "text-center font-black text-xl text-red-500 uppercase tracking-wide";
+                }
+            }
+
+            const losses = SIMULATOR_CONFIG.INITIAL_BALANCE + state.originalHutang;
+            const repLost = document.getElementById('rep-total-lost');
+            if (repLost) repLost.innerText = formatRupiah(losses);
+
+            // Hide Pinjol button once the debt becomes too critical
+            if (pinjolBtn) {
+                if (state.hutang >= 15000000) {
+                    pinjolBtn.classList.add('hidden');
+                    logger.alert("KARTU MATI: Seluruh aplikasi pinjol telah mem-blacklist data KTP Anda! Anda tidak bisa meminjam dana lagi.");
+                } else {
+                    pinjolBtn.classList.remove('hidden');
+                    pinjolBtn.innerText = state.hutang > 0 
+                        ? `🚨 Ambil Pinjol Tambahan Rp5.000.000 (Makin Terlilit!)` 
+                        : `🚨 Cairkan Pinjol Darurat Rp5.000.000 (Bunga 30%)`;
+                }
+            }
+
+            const modalContainer = document.getElementById('modal-container');
+            if (modalContainer) modalContainer.classList.remove('hidden');
+            playSynthesizedSound(110, 'sawtooth', 0.8, 0.2);
+        }
+
+        function tutupModal() {
+            const modalContainer = document.getElementById('modal-container');
+            if (modalContainer) modalContainer.classList.add('hidden');
+        }
+
+        // Initial launch hook
+        window.onload = function() {
+            createGridUI();
+            initChart();
+            logger.system("Inisialisasi visual simulator anti-judol 10x5 berhasil.");
+            logger.admin("Modus inisiasi: pancing_dopamin_pemula(). RTP di-set sepihak ke 85%.");
+        };
+    </script>
+</body>
+</html>
